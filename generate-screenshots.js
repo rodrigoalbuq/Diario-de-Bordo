@@ -13,15 +13,15 @@ async function ensureDir(dir) {
 
 async function generate() {
     const screenshotsDir = path.join(__dirname, 'screenshots');
-    const source = path.join(screenshotsDir, 'Diario de bordo 2025-12-19 .png');
+    await ensureDir(screenshotsDir);
+    const source = path.join(screenshotsDir, 'diario-de-bordo-2025-12-19.png');
 
     // Verifica origem
     if (!fs.existsSync(source)) {
         console.error('Imagem de origem não encontrada:', source);
+        console.error('Crie/renomeie a imagem para: screenshots/diario-de-bordo-2025-12-19.png');
         process.exit(1);
     }
-
-    await ensureDir(screenshotsDir);
 
     const outputs = [
         {
@@ -42,8 +42,8 @@ async function generate() {
         console.log('Gerando', out.label, '→', out.file);
         await sharp(source)
             .resize(out.width, out.height, {
-                fit: 'contain', // preserva proporção
-                background: { r: 245, g: 247, b: 250, alpha: 1 } // fundo claro
+                fit: 'contain',
+                background: { r: 245, g: 247, b: 250, alpha: 1 }
             })
             .png()
             .toFile(out.file);

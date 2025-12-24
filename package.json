@@ -5,7 +5,8 @@
   "main": "generate-icons.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "generate:screenshots": "node generate-screenshots.js"
+    "generate:screenshots": "node generate-screenshots.js",
+    "generate:icons": "node generate-icons.js"
   },
   "keywords": [],
   "author": "",

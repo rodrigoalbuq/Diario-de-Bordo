@@ -5,9 +5,6 @@
     const entriesList = document.getElementById('entriesList');
     const emptyState = document.getElementById('emptyState');
     const installBtn = document.getElementById('installBtn');
-    const screenshotSection = document.getElementById('screenshotSection');
-    const screenshotImg = document.getElementById('screenshotImg');
-    const downloadScreenshot = document.getElementById('downloadScreenshot');
 
     let deferredPrompt = null;
 
@@ -95,7 +92,7 @@
         installBtn.hidden = false;
     });
     installBtn.addEventListener('click', async () => {
-        // Primeiro: acionar o prompt de instalação rapidamente (gesto de usuário)
+        // Acionar o prompt de instalação (gesto de usuário)
         if (deferredPrompt) {
             installBtn.hidden = true;
             try {
@@ -110,22 +107,6 @@
             } finally {
                 deferredPrompt = null;
             }
-        }
-
-        // Depois: gerar a captura sem bloquear o gesto
-        try {
-            if (window.html2canvas) {
-                const canvas = await window.html2canvas(document.body, { useCORS: true, backgroundColor: '#f5f7fa' });
-                const dataURL = canvas.toDataURL('image/png');
-                if (screenshotImg && screenshotSection) {
-                    screenshotImg.src = dataURL;
-                    if (downloadScreenshot) downloadScreenshot.href = dataURL;
-                    screenshotSection.hidden = false;
-                    screenshotSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            }
-        } catch (err) {
-            console.error('Falha ao gerar captura:', err);
         }
     });
 
@@ -157,14 +138,6 @@
                     });
                 })
                 .catch(console.error);
-
-            // Mensagens do SW informando nova versão ativa
-            navigator.serviceWorker.addEventListener('message', (event) => {
-                const data = event.data || {};
-                if (data.type === 'SW_UPDATE_READY') {
-                    reloadOnce();
-                }
-            });
 
             // Quando o controlador muda, a nova versão está ativa
             navigator.serviceWorker.addEventListener('controllerchange', () => {
