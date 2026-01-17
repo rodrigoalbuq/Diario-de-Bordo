@@ -151,6 +151,11 @@
         // Default date = today
         const today = new Date().toISOString().slice(0, 10);
         if (!form.date.value) form.date.value = today;
+        // Footer year
+        const yearEl = document.getElementById('year');
+        if (yearEl) {
+            yearEl.textContent = String(new Date().getFullYear());
+        }
         render();
     })();
 })();
