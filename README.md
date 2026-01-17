@@ -145,3 +145,12 @@ Abaixo temos três prints da aplicação:
 - **UI responsiva e acessível:** grid responsivo, variáveis CSS (tokens de design), `position: sticky` no cabeçalho, labels semânticos e foco em legibilidade.
 - **Ícones e screenshots:** automação com Sharp (`generate-icons.js`) para exportar tamanhos PWA e script de screenshots (`generate-screenshots.js`) nos formatos recomendados.
 - **Publicação estática:** execução local via servidor estático (`http-server`) e preparo para deploy em GitHub Pages/Netlify/Vercel.
+
+- ## 🤝 Contribuições
+
+Contribuições são bem-vindas! Agradeço desde já. Sinta-se à vontade para:
+
+1. **Fork** o projeto
+2. **Crie** uma feature branch
+3. **Faça commit** das mudanças
+4. **Abra** um Pull Request
