@@ -50,3 +50,5 @@ Thumbs.db
 
 # Miscelânea
 *.local
+.vercel
+.env*.local

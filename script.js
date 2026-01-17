@@ -25,6 +25,11 @@
         const d = new Date(iso);
         return d.toLocaleDateString('pt-BR', { timeZone: 'UTC' });
     }
+    function formatTime(iso) {
+        if (!iso) return '';
+        const d = new Date(iso);
+        return d.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+    }
 
     // Render
     function render() {
@@ -41,7 +46,7 @@
             li.innerHTML = `
         <div class="entry-header">
           <div class="entry-title">${escapeHtml(entry.title)}</div>
-          <div class="entry-date">${formatDate(entry.date)}</div>
+                    <div class="entry-date">${formatDate(entry.date)}${entry.createdAt ? ' \u2022 ' + formatTime(entry.createdAt) : ''}</div>
         </div>
         <div class="entry-desc">${escapeHtml(entry.description)}</div>
         <div class="entry-actions">
@@ -69,7 +74,8 @@
         const date = form.date.value || new Date().toISOString().slice(0, 10);
         if (!title || !description) return;
         const entries = loadEntries();
-        entries.unshift({ title, description, date });
+        const createdAt = new Date().toISOString();
+        entries.unshift({ title, description, date, createdAt });
         saveEntries(entries);
         form.reset();
         render();

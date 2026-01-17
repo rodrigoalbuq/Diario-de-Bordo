@@ -1,5 +1,5 @@
 /* Service Worker for Diário de Bordo */
-const CACHE_NAME = 'diario-de-bordo-v3';
+const CACHE_NAME = 'diario-de-bordo-v4';
 const ASSETS = [
     './',
     // Evitar arquivos com espaços no nome no cache
