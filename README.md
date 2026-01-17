@@ -1,4 +1,4 @@
-# Diário de Bordo · [diario-de-bordo-virid.vercel.app](https://diario-de-bordo-tawny.vercel.app/)
+# Diário de Bordo · [Site](https://diario-de-bordo-tawny.vercel.app/)
 
 Aplicação web (PWA) simples para registrar entradas de um diário, com suporte a funcionamento offline via Service Worker e instalação como app.
 
